@@ -24,7 +24,15 @@ class CreateOrdersTable extends Migration
             $table->string('elektronskiNaslov');
             $table->string('nacinPlacila');
 
+            //podatki o statusu narocila
+            $table->string('completed')->default('no');
+            $table->string('shipped')->default('no');
+            $table->double('price')->default(0);
+
             //podatki o torti
+            $table->string('napis')->nullable();
+            $table->string('komentar')->nullable();
+
 
             $table->integer('steviloTort');
             //foreign key za SKUPINO torte
@@ -42,6 +50,14 @@ class CreateOrdersTable extends Migration
             //foreign key za OBLIKO torte
             $table->unsignedInteger('oblikaID')->unsigned();
             $table->foreign('oblikaID')->references('id')->on('oblikas');
+
+            //foreign key za OKRASKE
+            $table->unsignedInteger('okrasID')->unsigned();
+            $table->foreign('okrasID')->references('id')->on('okraskis');
+
+            //foreign key za STEVILO KOSOV
+            $table->unsignedInteger('partsID')->unsigned();
+            $table->foreign('partsID')->references('id')->on('parts');
         });
     }
 

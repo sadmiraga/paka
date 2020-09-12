@@ -25,4 +25,9 @@ class skupina extends Model
     {
         return $this->hasMany('App\parts');
     }
+
+    public function dimension()
+    {
+        return $this->hasMany('App\dimension');
+    }
 }

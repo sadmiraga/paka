@@ -2,36 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-use App\skupina;
-use App\oblika;
-
-class homeController extends Controller
+class HomeController extends Controller
 {
-    public function step1()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        //skupina data
-        $skupinas = skupina::all();
-
-        //oblika data
-        $oblikas = oblika::all();
-
-        //vse priloznosti oblike
-        $vsePriloznostiOblike = DB::table('oblikas')->where('skupinaID', 1)->get();
-        $torteZaOtroke = DB::table('oblikas')->where('skupinaID', 2)->get();
-        $torteIzPonudbe = DB::table('oblikas')->where('skupinaID', 3)->get();
-        $porocneTorte = DB::table('oblikas')->where('skupinaID', 4)->get();
-
-        return view('home')->with('skupinas', $skupinas)
-            ->with('oblikas', $oblikas)->with('vsePriloznostiOblike', $vsePriloznostiOblike)
-            ->with('torteZaOtroke', $torteZaOtroke)->with('torteIzPonudbe', $torteIzPonudbe)->with('porocneTorte', $porocneTorte);
+        $this->middleware('auth');
     }
 
-
-    public function step2($steviloTort)
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
-        return $steviloTort;
+        return view('adminPanel');
     }
 }

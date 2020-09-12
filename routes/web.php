@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'homeController@step1');
 
-Route::post('/{steviloTort}', 'homeController@step2');
+//ordering cake routes
+Route::get('/', 'OrdersController@step1');
+Route::post('/step2', 'OrdersController@step2');
+Route::post('/step3', 'OrdersController@step3');
+Route::post('/finish', 'OrdersController@finish');
+
+
+//admin routes
+Route::get('/orders', 'OrdersController@orders');
+Route::get('/ship/{orderID}', 'OrdersController@completeOrder');
+
+
+
+
+//default routes
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

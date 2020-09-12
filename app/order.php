@@ -25,4 +25,14 @@ class order extends Model
     {
         return $this->hasMany('App\preliv');
     }
+
+    public function okraski()
+    {
+        return $this->hasMany('App\okraski');
+    }
+
+    public function parts()
+    {
+        return $this->hasMany('App\parts');
+    }
 }

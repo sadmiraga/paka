@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartsTable extends Migration
+class CreateOkraskisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreatePartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parts', function (Blueprint $table) {
+        Schema::create('okraskis', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('steviloKosov');
+            $table->string('name');
             $table->timestamps();
-
-            //SKUPINA foreign key
-            $table->unsignedInteger('skupinaID')->unsigned();
-            $table->foreign('skupinaID')->references('id')->on('skupinas');
+            $table->string('dimenzija');
         });
     }
 
@@ -31,6 +28,6 @@ class CreatePartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parts');
+        Schema::dropIfExists('okraskis');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartsTable extends Migration
+class CreateDimensionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parts', function (Blueprint $table) {
+        Schema::create('dimensions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('steviloKosov');
+            $table->string('dimenzija');
             $table->timestamps();
 
-            //SKUPINA foreign key
-            $table->unsignedInteger('skupinaID')->unsigned();
-            $table->foreign('skupinaID')->references('id')->on('skupinas');
+            $table->unsignedInteger('oblikaID')->unsigned();
+            $table->foreign('oblikaID')->references('id')->on('oblikas');
         });
     }
 
@@ -31,6 +30,6 @@ class CreatePartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parts');
+        Schema::dropIfExists('dimensions');
     }
 }
