@@ -25,7 +25,13 @@ Route::post('/finish', 'OrdersController@finish');
 //admin routes
 Route::get('/orders', 'OrdersController@orders');
 Route::get('/ship/{orderID}', 'OrdersController@completeOrder');
+Route::get('/admin', 'AdminController@index');
 
+Route::get('/skupine', 'AdminController@skupine');
+Route::get('/oblike', 'AdminController@oblike');
+Route::get('/okusi', 'AdminController@okusi');
+Route::get('/prelivi', 'AdminController@prelivi');
+Route::get('/dekori', 'AdminController@dekori');
 
 
 
