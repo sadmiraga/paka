@@ -3,6 +3,8 @@
 
 <div class="checkoutContainer">
 
+    <button onclick="location.href='/home'"> admin panel </button>
+
 {!! Form::open(['url'=>'/step2', 'method'=> 'post','autocomplete'=>'off']) !!}
 @csrf
 

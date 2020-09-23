@@ -25,16 +25,27 @@ Route::post('/finish', 'OrdersController@finish');
 //admin routes
 Route::get('/orders', 'OrdersController@orders');
 Route::get('/ship/{orderID}', 'OrdersController@completeOrder');
-Route::get('/admin', 'AdminController@index');
 
-Route::get('/skupine', 'AdminController@skupine');
+Route::get('/skupine', 'skupineController@skupine');
 Route::get('/oblike', 'AdminController@oblike');
 Route::get('/okusi', 'AdminController@okusi');
 Route::get('/prelivi', 'AdminController@prelivi');
 Route::get('/dekori', 'AdminController@dekori');
+
+//ADMIN FORM ROUTES
+
+//skupina routes
+Route::post('/dodajSkupino', 'AdminController@addGroup');
+Route::get('/urediSkupino/{skupinaID}', 'AdminController@editGroup');
+Route::get('/izbrisiSkupino/{skupinaID}', 'AdminController@deleteGroup');
+
 
 
 
 //default routes
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//route doesn't work for some weird reason
+//Route::get('/admin', 'AdminController@index');
