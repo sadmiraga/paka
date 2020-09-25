@@ -3,14 +3,14 @@
 @section('content')
 
 
-<p> Dodaj obliko </p>
+<p> Dodaj Okus </p>
 
-{!! Form::open(['url'=>'/dodajObliko', 'method'=> 'post']) !!}
+{!! Form::open(['url'=>'/dodajOkus', 'method'=> 'post']) !!}
 
-{!!Form::text('imeOblike','',['class'=>'form-control','id'=>'adminPanelTextInput','placeholder'=>'Vpišite ime nove oblike','required'=>'required'])!!}
+{!!Form::text('imeOkusa','',['class'=>'form-control','id'=>'adminPanelTextInput','placeholder'=>'Vpišite ime novega okusa','required'=>'required'])!!}
 
 
-<label> Izberite skupino oblike </label> <br>
+<label> Izberite skupino Okusa </label> <br>
 <select class="form-control" name="skupinaID" id="skupinaID" >
     <option value="0" selected disabled> Izberite skupino </option>
     @foreach ($skupine as $skupina)
@@ -31,7 +31,7 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Ime Oblike</th>
+        <th scope="col">Ime Okusa</th>
         <th scope="col">Ime Skupina kateri pripada</th>
         <th scope="col">Datum Dodajanja</th>
         <th scope="col">#</th>
@@ -40,23 +40,23 @@
     </thead>
     <tbody>
 
-        @foreach($oblike as $oblika)
+        @foreach($okusi as $okus)
 
       <tr>
-        <td scope="row">{{$oblika->name}}</td>
+        <td scope="row">{{$okus->name}}</td>
 
         <!-- get group name with ID -->
         <td>
             @foreach ($skupine as $skupina)
-                @if($skupina->id == $oblika->skupinaID)
+                @if($skupina->id == $okus->skupinaID)
                     {{$skupina->name}}
                 @endif
             @endforeach
         </td>
 
-        <td>{{$oblika->created_at}}</td>
-        <td><button onclick="location.href='/urediObliko/{{$oblika->id}}'" class="btn btn-warning">Uredi</button></td>
-        <td><button onclick="location.href='/izbrisiObliko/{{$oblika->id}}'" class="btn btn-danger">Izbriši</button></td>
+        <td>{{$okus->created_at}}</td>
+        <td><button onclick="location.href='/urediOkus/{{$okus->id}}'" class="btn btn-warning">Uredi</button></td>
+        <td><button onclick="location.href='/izbrisiOkus/{{$okus->id}}'" class="btn btn-danger">Izbriši</button></td>
       </tr>
 
       @endforeach

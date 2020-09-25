@@ -20,7 +20,7 @@
 <button onclick="window.location='/oblike'" class="btn btn-primary"> Oblike </button>
 <button onclick="window.location='/okusi'" class="btn btn-primary"> Okusi </button>
 <button onclick="window.location='/prelivi'" class="btn btn-primary"> Prelivi </button>
-<button onclick="window.location='/dekori'" class="btn btn-primary"> Dekori </button>
+<button onclick="window.location='/dekori'" class="btn btn-primary"> Okrasi </button>
 
 
 @endsection

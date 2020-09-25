@@ -27,7 +27,7 @@ class CreateOrdersTable extends Migration
             //podatki o statusu narocila
             $table->string('completed')->default('no');
             $table->string('shipped')->default('no');
-            $table->double('price')->default(0);
+            $table->integer('price')->default(0);
 
             //podatki o torti
             $table->string('napis')->nullable();

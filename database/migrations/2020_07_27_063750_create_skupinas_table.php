@@ -15,6 +15,7 @@ class CreateSkupinasTable extends Migration
     {
         Schema::create('skupinas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cena')->default(0);
             $table->string('name');
             $table->timestamps();
         });

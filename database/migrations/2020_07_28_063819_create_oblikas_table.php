@@ -17,6 +17,7 @@ class CreateOblikasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
+            $table->integer('cena')->default(0);
 
             //foreign key SKUPINA ID
             $table->unsignedInteger('skupinaID')->unsigned();

@@ -30,33 +30,4 @@ class AdminController extends Controller
             return 'Nimate dostopa do te strani, morate se <a href="/login"> prijaviti </a>';
         }
     }
-
-
-    //page with all groups and add group form
-    public function skupine()
-    {
-        $skupinas = DB::table('skupinas')->orderBy('created_at', 'desc')->get();
-        return view('adminPanel.skupine')->with('skupine', $skupinas);
-    }
-
-
-    public function addGroup(Request $request)
-    {
-        $skupina = new skupina();
-        $skupina->name = $request->input('imeSkupine');
-        $skupina->save();
-        return redirect()->back();
-    }
-
-    public function deleteGroup($skupinaID)
-    {
-        $skupina = skupina::find($skupinaID);
-        $skupina->delete();
-        return redirect()->back();
-    }
-
-    public function editGroup($skupinaID)
-    {
-        return $skupinaID;
-    }
 }
