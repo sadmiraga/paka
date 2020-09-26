@@ -19,16 +19,20 @@ use App\okus;
         <th scope="col">preliv</th>
         <th scope="col">Oblik</th>
         <th scope="col">okras</th>
+        <th scope="col">Cena</th>
+        <th scope="col">Stevilo kosov</th>
         <th scope="col">#</th>
       </tr>
     </thead>
     <tbody>
         @foreach($orders as $order)
         <?php
-            $okus = DB::table('okuses')->where('id',$order->id)->value('name');
-            $preliv = DB::table('prelivs')->where('id',$order->id)->value('name');
-            $oblik = DB::table('oblikas')->where('id',$order->id)->value('name');
-            $okras = DB::table('okraskis')->where('id',$order->id)->value('name');
+            $okus = DB::table('okuses')->where('id',$order->okusID)->value('name');
+            $preliv = DB::table('prelivs')->where('id',$order->prelivID)->value('name');
+            $oblik = DB::table('oblikas')->where('id',$order->oblikaID)->value('name');
+            $okras = DB::table('okraskis')->where('id',$order->okrasID)->value('name');
+            $steviloKosov = DB::table('parts')->where('id',$order->partsID)->value('steviloKosov');
+
 
         ?>
 
@@ -44,6 +48,9 @@ use App\okus;
                 <td>{{$preliv}}</td>
                 <td>{{$oblik}}</td>
                 <td>{{$okras}}</td>
+                <td>{{$order->price}}</td>
+
+                <td>{{$steviloKosov}}</td>
                 <td>
                     <button onclick="location.href='{{url('/ship/'.$order->id)}}'" class="btn btn-success"> Koncaj narocilo </button>
                 </td>

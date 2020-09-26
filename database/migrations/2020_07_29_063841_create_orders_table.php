@@ -18,11 +18,11 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
 
             //podatki o kupcu
-            $table->string('ime');
-            $table->string('priimek');
-            $table->string('telefonskaStevilka');
-            $table->string('elektronskiNaslov');
-            $table->string('nacinPlacila');
+            $table->string('ime')->nullable();
+            $table->string('priimek')->nullable();
+            $table->string('telefonskaStevilka')->nullable();
+            $table->string('elektronskiNaslov')->nullable();
+            $table->string('nacinPlacila')->nullable();
 
             //podatki o statusu narocila
             $table->string('completed')->default('no');

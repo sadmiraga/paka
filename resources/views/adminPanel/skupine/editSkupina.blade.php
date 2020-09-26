@@ -11,6 +11,7 @@
 
 {{ Form::hidden('skupinaID', $skupina->id) }}
 
+{!!Form::number('cenaSkupine', $skupina->cena, ['class' => 'form-control', 'placeholder' => 'Vnesite ceno skupine v €'])!!}
 
 {!! Form::submit('Shrani',['class'=>'btn btn-success']) !!}
 

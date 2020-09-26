@@ -9,6 +9,8 @@
 
 {!!Form::text('imeOblike',$oblika->name,['class'=>'form-control','id'=>'adminPanelTextInput','required'=>'required'])!!}
 
+{!!Form::number('cenaOblike', $oblika->cena, ['class' => 'form-control', 'placeholder' => 'Vnesite novo ceno oblike v €'])!!}
+
 {{ Form::hidden('oblikaID', $oblika->id) }}
 
 

@@ -88,16 +88,23 @@
         </select> <br> <br>
     </div>
 
+
+    <select aria-placeholder="Izberite stevilo kosov" class="form-control" name="steviloKosovID" id="steviloKosovID" >
+        <option value="0" selected disabled> Izberite stevilo kosov </option>
+    </select> <br> <br>
+
+
+
     <div id="submitDiv">
-
-    <input type="submit" class="btn btn-warning" id="myb" value="Nadaljuj na naslednji korak">
-
+        <input type="submit" class="btn btn-warning" id="myb" value="Nadaljuj na naslednji korak">
     </div>
 
 
 
     {!! Form::close() !!}
 </div>
+
+
 
 
 <script type=text/javascript>
@@ -149,6 +156,30 @@
     });
   }else{
     $("#okusID").empty();
+  }
+  });
+
+    //Dynamic stevilo kosov field
+    $('#skupinaID').on('change',function(){
+  var skupinaID = $(this).val();
+  if(skupinaID){
+    $.ajax({
+      type:"GET",
+      url:"{{url('getSteviloKosovList')}}?skupinaID="+skupinaID,
+      success:function(res){
+      if(res){
+        $("#steviloKosovID").empty();
+        $.each(res,function(key,value){
+          $("#steviloKosovID").append('<option value="'+key+'">'+value+'</option>');
+        });
+
+      }else{
+        $("#steviloKosovID").empty();
+      }
+      }
+    });
+  }else{
+    $("#steviloKosovID").empty();
   }
   });
 

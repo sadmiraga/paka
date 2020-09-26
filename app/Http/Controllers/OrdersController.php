@@ -13,11 +13,13 @@ use App\okus;
 use App\preliv;
 use App\okraski;
 use App\order;
+use App\parts;
 use Laravel\Ui\Presets\React;
 
 class OrdersController extends Controller
 {
 
+    // get OBLIKA with ajax
     public function getOblikasList(Request $request)
     {
         $oblikasFetch = DB::table("oblikas")
@@ -26,12 +28,24 @@ class OrdersController extends Controller
         return response()->json($oblikasFetch);
     }
 
-    public function getOkusList(Request $request){
-        
+    //get OKUS with ajax
+    public function getOkusList(Request $request)
+    {
+
         $okusesFetch = DB::table("okuses")
             ->where("skupinaID", $request->skupinaID)
             ->pluck("name", "id");
         return response()->json($okusesFetch);
+    }
+
+    //get OKUS with ajax
+    public function getSteviloKosovList(Request $request)
+    {
+
+        $kosiFetch = DB::table("parts")
+            ->where("skupinaID", $request->skupinaID)
+            ->pluck("steviloKosov", "id");
+        return response()->json($kosiFetch);
     }
 
 
@@ -67,6 +81,7 @@ class OrdersController extends Controller
         //get all okrasi
         $okraski = okraski::all();
 
+        $parts = parts::all();
 
 
 
@@ -79,7 +94,8 @@ class OrdersController extends Controller
             ->with('torteIzPonudbeTaste', $torteIzPonudbeTaste)
             ->with('porocneTorteTaste', $porocneTorteTaste)
             ->with('prelivi', $prelivi)
-            ->with('okraski', $okraski);
+            ->with('okraski', $okraski)
+            ->with('parts', $parts);
     }
 
 
@@ -110,6 +126,7 @@ class OrdersController extends Controller
         $order->prelivID = $request->input('prelivID');
         $order->oblikaID = $request->input('oblikaID');
         $order->okrasID = $request->input('dekorID');
+        $order->partsID = $request->input('steviloKosovID');
         $order->save();
 
         return view('steps.step2')->with('orderID', $order->id);
@@ -144,7 +161,32 @@ class OrdersController extends Controller
         $orderToFinish = order::find($request->input('orderID'));
         $orderToFinish->nacinPlacila = $request->input('payment');
         $orderToFinish->completed = 'yes';
+
+        // get all groups and shapes
+        $allShapes = oblika::all();
+        $allGroups = skupina::all();
+
+        $orderPrice = 0;
+
+        //get the OBLIKA price
+        foreach ($allShapes as $shape) {
+            if ($shape->id == $orderToFinish->oblikaID) {
+                $orderPrice = $orderPrice + $shape->cena;
+            }
+        }
+
+        //get the SKUPINA price
+        foreach ($allGroups as $group) {
+            if ($group->id == $orderToFinish->skupinaID) {
+                $orderPrice = $orderPrice + $group->cena;
+            }
+        }
+
+        //insert price into database
+        $orderToFinish->price = $orderPrice;
+
         $orderToFinish->save();
+        return view('orders.thankyou');
     }
 
 

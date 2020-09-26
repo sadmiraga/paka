@@ -15,7 +15,7 @@ class CreatePartsTable extends Migration
     {
         Schema::create('parts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('steviloKosov');
+            $table->string('steviloKosov');
             $table->timestamps();
 
             //SKUPINA foreign key

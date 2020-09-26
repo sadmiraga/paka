@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //ajax routes
 Route::get('getOblikasList', 'OrdersController@getOblikasList');
 Route::get('getOkusList', 'OrdersController@getOkusList');
+Route::get('getSteviloKosovList', 'OrdersController@getSteviloKosovList');
 
 
 //ordering cake routes
@@ -69,6 +70,13 @@ Route::get('/urediOkras/{okrasID}', 'okrasiController@urediOkras');
 Route::post('/urediOkrasExe', 'okrasiController@urediOkrasExe');
 Route::get('/izbrisiOkras/{okrasID}', 'okrasiController@deleteOkras');
 
+
+//parts routes
+Route::get('/kosi', 'partsController@index');
+Route::post('/dodajSteviloKosov', 'partsController@create');
+Route::get('/urediKos/{partID}', 'partsController@editIndex');
+Route::post('/urediSteviloKosov', 'partsController@editPartExe');
+Route::get('/IzbrisiKos/{partID}', 'partsController@deletePart');
 
 
 //default routes

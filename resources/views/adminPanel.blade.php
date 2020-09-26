@@ -21,6 +21,7 @@
 <button onclick="window.location='/okusi'" class="btn btn-primary"> Okusi </button>
 <button onclick="window.location='/prelivi'" class="btn btn-primary"> Prelivi </button>
 <button onclick="window.location='/dekori'" class="btn btn-primary"> Okrasi </button>
+<button onclick="window.location='/kosi'" class="btn btn-primary"> Stevilo kosov </button>
 
 
 @endsection

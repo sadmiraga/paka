@@ -9,6 +9,7 @@
 
 {!!Form::text('imeOblike','',['class'=>'form-control','id'=>'adminPanelTextInput','placeholder'=>'Vpišite ime nove oblike','required'=>'required'])!!}
 
+{!!Form::number('cenaOblike', '', ['class' => 'form-control', 'placeholder' => 'Vnesite ceno oblike v €'])!!}
 
 <label> Izberite skupino oblike </label> <br>
 <select class="form-control" name="skupinaID" id="skupinaID" >
@@ -33,6 +34,7 @@
       <tr>
         <th scope="col">Ime Oblike</th>
         <th scope="col">Ime Skupina kateri pripada</th>
+        <th scope="col">cena oblike</th>
         <th scope="col">Datum Dodajanja</th>
         <th scope="col">#</th>
         <th scope="col">#</th>
@@ -53,6 +55,8 @@
                 @endif
             @endforeach
         </td>
+
+        <td scope="row">{{$oblika->cena}}€</td>
 
         <td>{{$oblika->created_at}}</td>
         <td><button onclick="location.href='/urediObliko/{{$oblika->id}}'" class="btn btn-warning">Uredi</button></td>

@@ -23,7 +23,7 @@ class oblikeController extends Controller
         $oblike = DB::table('oblikas')->orderBy('created_at', 'desc')->get();
 
 
-        return view('adminPanel.oblike')->with('skupine', $skupine)->with('oblike', $oblike);
+        return view('adminPanel.oblike.oblike')->with('skupine', $skupine)->with('oblike', $oblike);
     }
 
 
@@ -34,6 +34,7 @@ class oblikeController extends Controller
         $oblika = new oblika();
         $oblika->name = $request->input('imeOblike');
         $oblika->skupinaID = $request->input('skupinaID');
+        $oblika->cena = $request->input('cenaOblike');
         $oblika->save();
         return redirect()->back();
     }
@@ -42,7 +43,7 @@ class oblikeController extends Controller
     public function editOblika($oblikaID)
     {
         $oblika = oblika::find($oblikaID);
-        return view('adminPanel.editOblika')->with('oblika', $oblika);
+        return view('adminPanel.oblike.editOblika')->with('oblika', $oblika);
     }
 
     //edit shape execute
@@ -54,6 +55,10 @@ class oblikeController extends Controller
 
         //change name for shape
         $changeOblika->name = $request->input('imeOblike');
+
+        ///change price for shape
+        $changeOblika->cena = $request->input('cenaOblike');
+
         $changeOblika->save();
         return redirect('/oblike');
     }

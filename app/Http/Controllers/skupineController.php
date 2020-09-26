@@ -16,7 +16,7 @@ class skupineController extends Controller
     public function skupine()
     {
         $skupinas = DB::table('skupinas')->orderBy('created_at', 'desc')->get();
-        return view('adminPanel.skupine')->with('skupine', $skupinas);
+        return view('adminPanel.skupine.skupine')->with('skupine', $skupinas);
     }
 
 
@@ -24,6 +24,7 @@ class skupineController extends Controller
     {
         $skupina = new skupina();
         $skupina->name = $request->input('imeSkupine');
+        $skupina->cena = $request->input('cenaSkupine');
         $skupina->save();
         return redirect()->back();
     }
@@ -55,6 +56,7 @@ class skupineController extends Controller
         //find group data
         $skupina = skupina::find($request->input('skupinaID'));
         $skupina->name = $request->input('imeSkupine');
+        $skupina->cena = $request->input('cenaSkupine');
         $skupina->save();
         return redirect('/skupine');
     }
