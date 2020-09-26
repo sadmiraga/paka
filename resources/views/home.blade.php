@@ -46,7 +46,7 @@
         <br><br>
 
         <label> 2. Izbor torte </label> <br>
-        <select class="form-control" onchange="oblikaBasedOnSkupina();  okusiFunction(); sizeFunction(); " name="skupinaID" id="skupinaID">
+        <select class="form-control"  name="skupinaID" id="skupinaID">
             <option value="0" selected disabled> Izberite skupino </option>
 
             @foreach ( $skupinas ?? '' as $skupina)
@@ -60,9 +60,6 @@
         <label> 3.  Izbor oblike </label> <br>
         <select class="form-control" name="oblikaID" id="oblikaID" >
             <option value="0" selected disabled> Izberite obliko </option>
-            @foreach ($oblikas as $oblika)
-                <option value="{{$oblika->id}}"> {{$oblika->name}} </option>
-            @endforeach
         </select> <br> <br>
     </div>
 
@@ -72,9 +69,6 @@
         <label> 4.  Izbor okusa </label> <br>
         <select class="form-control" name="okusID" id="okusID"  >
             <option value="0" selected disabled> Izberite Okus </option>
-            @foreach ($vsePriloznostiTaste as $okus)
-                <option value="{{$okus->id}}"> {{$okus->name}} </option>
-            @endforeach
         </select> <br>
 
         <label> 5. izbor preliva </label> <br>
@@ -106,88 +100,64 @@
 </div>
 
 
+<script type=text/javascript>
+
+    //dynamic oblika field
+    $('#skupinaID').change(function(){
+    var skupinaID = $(this).val();
+    if(skupinaID){
+      $.ajax({
+        type:"GET",
+        url:"{{url('getOblikasList')}}?skupinaID="+skupinaID,
+        success:function(res){
+        if(res){
+          $("#oblikaID").empty();
+          $("#oblikaID").append('<option>Select</option>');
+          $.each(res,function(key,value){
+            $("#oblikaID").append('<option value="'+key+'">'+value+'</option>');
+          });
+
+        }else{
+          $("#oblikaID").empty();
+        }
+        }
+      });
+    }else{
+      $("#oblikaID").empty();
+
+    }
+    });
+
+    //Dynamic OKUS field
+    $('#skupinaID').on('change',function(){
+  var skupinaID = $(this).val();
+  if(skupinaID){
+    $.ajax({
+      type:"GET",
+      url:"{{url('getOkusList')}}?skupinaID="+skupinaID,
+      success:function(res){
+      if(res){
+        $("#okusID").empty();
+        $.each(res,function(key,value){
+          $("#okusID").append('<option value="'+key+'">'+value+'</option>');
+        });
+
+      }else{
+        $("#okusID").empty();
+      }
+      }
+    });
+  }else{
+    $("#okusID").empty();
+  }
+  });
+
+
+  </script>
+
+
+
 @endsection
-<script>
 
-
-        function okusiFunction(){
-            var selectedSkupina =  document.getElementById('skupinaID').value;
-            var i;
-
-            //get the right data to fill dropdown
-            var tasteData;
-            if(selectedSkupina == 1){
-                tasteData = <?php echo json_encode($vsePriloznostiTaste); ?>
-            } else if(selectedSkupina == 2){
-                tasteData = <?php echo json_encode($torteZaOtrokeTaste); ?>
-            } else if(selectedSkupina == 3){
-                tasteData = <?php echo json_encode($torteIzPonudbeTaste); ?>
-            } else {
-                tasteData = <?php echo json_encode($porocneTorteTaste); ?>
-            }
-
-            //delete dropdown options
-            var dropDownMeni = document.getElementById("okusID");
-            var dolzina = dropDownMeni.length -1;
-
-            do{
-                dropDownMeni.remove(dolzina);
-                dolzina-=1;
-            } while (dolzina!=0);
-
-
-            //add elements from the right group
-            for(i=0;i<=tasteData.length-1;i++){
-
-            var option = document.createElement("option");
-            option.text= tasteData[i].name;
-            option.value = tasteData[i].id;
-            dropDownMeni.add(option);
-            }
-
-
-
-        }
-
-
-        function oblikaBasedOnSkupina(){
-
-            //get id from selected value
-            var selectedSkupina =  document.getElementById('skupinaID').value;
-            var i;
-            var allShapes;
-
-            //get the right data to fill dropdown
-            var shapeData;
-            if(selectedSkupina == 1){
-                shapeData = <?php echo json_encode($vsePriloznostiOblike); ?>
-            } else if(selectedSkupina == 2){
-                shapeData = <?php echo json_encode($torteZaOtroke); ?>
-            } else if(selectedSkupina == 3){
-                shapeData = <?php echo json_encode($torteIzPonudbe); ?>
-            } else if(selectedSkupina == 4){
-                shapeData = <?php echo json_encode($porocneTorte); ?>
-            }
-
-            //delete dropdown options
-            var dropDownMeni = document.getElementById("oblikaID");
-            var dolzina = dropDownMeni.length -1;
-
-            do{
-                dropDownMeni.remove(dolzina);
-                dolzina-=1;
-            } while (dolzina!=0);
-
-            //add elements from the right group
-            for(i=0;i<=shapeData.length-1;i++){
-
-                var option = document.createElement("option");
-                option.text= shapeData[i].name;
-                option.value = shapeData[i].id;
-                dropDownMeni.add(option);
-            }
-
-        }
-    </script>
 
 

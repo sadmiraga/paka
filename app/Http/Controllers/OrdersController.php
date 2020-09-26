@@ -17,6 +17,25 @@ use Laravel\Ui\Presets\React;
 
 class OrdersController extends Controller
 {
+
+    public function getOblikasList(Request $request)
+    {
+        $oblikasFetch = DB::table("oblikas")
+            ->where("skupinaID", $request->skupinaID)
+            ->pluck("name", "id");
+        return response()->json($oblikasFetch);
+    }
+
+    public function getOkusList(Request $request){
+        
+        $okusesFetch = DB::table("okuses")
+            ->where("skupinaID", $request->skupinaID)
+            ->pluck("name", "id");
+        return response()->json($okusesFetch);
+    }
+
+
+
     public function step1()
     {
         //skupina data

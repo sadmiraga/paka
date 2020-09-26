@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//ajax routes
+Route::get('getOblikasList', 'OrdersController@getOblikasList');
+Route::get('getOkusList', 'OrdersController@getOkusList');
+
 
 //ordering cake routes
 Route::get('/', 'OrdersController@step1');
