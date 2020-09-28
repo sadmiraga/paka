@@ -21,6 +21,8 @@ use App\okus;
         <th scope="col">okras</th>
         <th scope="col">Cena</th>
         <th scope="col">Stevilo kosov</th>
+        <th scope="col">Napis</th>
+        <th scope="col">Komentar</th>
         <th scope="col">#</th>
       </tr>
     </thead>
@@ -49,8 +51,15 @@ use App\okus;
                 <td>{{$oblik}}</td>
                 <td>{{$okras}}</td>
                 <td>{{$order->price}}€</td>
-
                 <td>{{$steviloKosov}}</td>
+                <td>
+                    @if($order->napis == null)
+                        {{"Brez napisa"}}
+                    @else
+                        {{$order->napis}}
+                    @endif
+                </td>
+                <td>{{$order->komentar}}</td>
                 <td>
                     <button onclick="location.href='{{url('/ship/'.$order->id)}}'" class="btn btn-success"> Koncaj narocilo </button>
                 </td>

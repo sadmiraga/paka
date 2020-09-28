@@ -10933,3 +10933,55 @@ a.text-dark:focus {
   height: 100%;
 }
 
+.formElement {
+  width: 30%;
+  display: inline-block;
+  margin: 1%;
+}
+
+.formElementName {
+  color: #dcdcdc;
+}
+
+.formElementNumber {
+  background-color: white;
+  color: grey;
+  border-radius: 2%;
+}
+
+#submitDiv {
+  float: right;
+  margin-top: 2%;
+}
+
+.checkoutContainer {
+  width: 100%;
+  padding-right: 10%;
+  padding-left: 10%;
+  padding: 25px;
+  background-color: grey;
+  margin-top: 3%;
+}
+
+@media screen and (max-width: 800px) {
+  .formElement {
+    width: 100%;
+  }
+}
+
+#active {
+  background-color: orange;
+  color: black;
+}
+
+.calm {
+  background-color: #dcdcdc;
+  padding: 10px;
+  width: 30%;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: 1%;
+}
+

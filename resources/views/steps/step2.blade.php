@@ -39,29 +39,36 @@
 
 <div class="checkoutContainer">
 
-    <div id="contactContainer">
-        <div class="prvaLijeva">
+
+        <div class="entireRow">
             <label> 1 kupec </label><br>
-            <!-- FIRST NAME -->
-            {{ Form::text('firstName', '', ['class' => 'form-control','placeholder'=> 'ime'  ])}}
-            <br> <br>
 
-            <!-- LAST NAME -->
-            {{ Form::text('lastName', '', ['class' => 'form-control','placeholder'=> 'priimek'  ])}}
-            <br> <br>
+            <div class="formElement">
+                {{ Form::text('firstName', '', ['class' => 'form-control','placeholder'=> 'ime'  ])}}
+            </div>
+
+
+            <div class="formElement">
+                {{ Form::text('lastName', '', ['class' => 'form-control','placeholder'=> 'priimek'  ])}}
+            </div>
+
         </div>
 
-        <div  class="prvaDesna">
+
+        <div class="entireRow">
             <label> 2 Kontakt </label><br>
-            <!-- PHONE -->
-            {{ Form::text('phoneNumber', '', ['class' => 'form-control','placeholder'=> 'tel. stevilka'  ])}}
-            <br> <br>
 
-            <!-- EMAIL -->
+            <div class="formElement">
+                {{ Form::text('phoneNumber', '', ['class' => 'form-control','placeholder'=> 'tel. stevilka'  ])}}
+            </div>
+
+            <div class="formElement">
             {{ Form::text('email', '', ['class' => 'form-control','placeholder'=> 'elektronski naslov'  ])}}
-            <br> <br>
+            </div>
+
         </div>
-    </div>
+
+
 
 
 

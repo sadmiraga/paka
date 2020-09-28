@@ -120,6 +120,8 @@ class OrdersController extends Controller
         $order->completed = 'no';
         $order->shipped = 'no';
 
+        $order->napis = $request->input('tortniNapis');
+        $order->komentar = $request->input('komentar');
         $order->steviloTort = $request->input('steviloTort');
         $order->skupinaID = $request->input('skupinaID');
         $order->okusID = $request->input('okusID');

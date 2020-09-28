@@ -30,16 +30,8 @@
 
     <style>
 
-    .calm{
-        background-color: grey;
-        padding:10px;
-        width: 30%;
-        font-size: 20px;
-        font-weight: 500;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-align: center;
-        margin: 1%;
-    }
+
+
 
     .container{
         display:flex;
@@ -48,26 +40,14 @@
         margin-right: 10%;
     }
 
-    #active{
-        background-color:orange;
-    }
 
-    .checkoutContainer{
-        width: 80%;
-        margin-right: 10%;
-        margin-left: 10%;
-        padding: 25px;
 
-        margin-top:3%;
-
-    }
 
     .bodyContainer{
-
         width: 80%;
         margin-left: 10%;
         margin-right: 10%;
-        background-color: 	#D3D3D3;
+        background-color: 	grey;
     }
 
 
@@ -84,34 +64,11 @@
         display:flex;
     }
 
-    #right{
-        margin-left: 10%;
-        float: right;
-    }
 
-    #left{
-        float:left;
-        margin-right: 10%;
-    }
 
-    .prvaLijeva{
-        width:40%;
-        float: left;
-        text-align: left;
-        margin-top: 4%;
-    }
 
-    .prvaDesna{
-        width:40%;
-        float: right;
-        text-align: left;
-        margin-top: 4%;
-    }
 
-    #submitDiv{
-        float:right;
-        margin-top: 2%;
-    }
+
 
     #steviloTort{
         height: 40px;
@@ -121,7 +78,7 @@
 
     </style>
   </head>
-  <body class="bg-light" data-gr-c-s-loaded="true">
+  <body style="background-color:grey;" class="bg-light" data-gr-c-s-loaded="true">
 
 
     <div class="orderContent" >
