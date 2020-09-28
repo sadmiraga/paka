@@ -195,7 +195,7 @@ class OrdersController extends Controller
         $orders = DB::table('orders')->where('completed', 'yes')->get();
 
         if ($user = Auth::user()) {
-            return view('orders')->with('orders', $orders);
+            return view('orders.orders')->with('orders', $orders);
         } else {
             return 'Nimate dostopa do te strani';
         }

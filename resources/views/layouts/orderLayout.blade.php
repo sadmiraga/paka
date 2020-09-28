@@ -13,10 +13,12 @@
         <!-- ajax -->
         <script src=//www.codermen.com/js/jquery.js></script>
 
+
+
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title>Checkout example for Bootstrap</title>
+    <title>Paka</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
 
@@ -68,14 +70,7 @@
         background-color: 	#D3D3D3;
     }
 
-    #myb{
-        border-radius: 50px;
-        outline: none;
-        width: 300px;
-        background-color:orange;
 
-
-    }
 
     .danger{
         background-color: red;
@@ -129,7 +124,8 @@
   <body class="bg-light" data-gr-c-s-loaded="true">
 
 
-    @yield('content')
-
+    <div class="orderContent" >
+        @yield('content')
+    </div>
 
 </body></html>

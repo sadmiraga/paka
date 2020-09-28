@@ -48,7 +48,7 @@ use App\okus;
                 <td>{{$preliv}}</td>
                 <td>{{$oblik}}</td>
                 <td>{{$okras}}</td>
-                <td>{{$order->price}}</td>
+                <td>{{$order->price}}€</td>
 
                 <td>{{$steviloKosov}}</td>
                 <td>

@@ -16,6 +16,7 @@
 </div>
 
 
+<button onclick="window.location='/orders'" class="btn btn-primary"> Naročila </button>
 <button onclick="window.location='/skupine'" class="btn btn-primary"> Skupine </button>
 <button onclick="window.location='/oblike'" class="btn btn-primary"> Oblike </button>
 <button onclick="window.location='/okusi'" class="btn btn-primary"> Okusi </button>

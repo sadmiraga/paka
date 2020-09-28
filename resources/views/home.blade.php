@@ -23,7 +23,6 @@
 </div>
 
 
-
     <!-- errror messages -->
     @if ($errors->any())
         <div class="danger">
@@ -96,7 +95,7 @@
 
 
     <div id="submitDiv">
-        <input type="submit" class="btn btn-warning" id="myb" value="Nadaljuj na naslednji korak">
+        <input type="submit" class="btn btn-warning"  value="Nadaljuj na naslednji korak">
     </div>
 
 
